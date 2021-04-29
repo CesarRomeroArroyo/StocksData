@@ -1,0 +1,22 @@
+<div class="layout-column align-items-center mt-50">
+    <section class="layout-row align-items-center justify-content-center">
+    <form [formGroup]="formT" (ngSubmit)="searchData()">
+      <input type="text" class="large" placeholder="5-January-2000" formControlName="appInput"
+             id="app-input" data-test-id="app-input" name="appInput"/>
+             <span class="invalid-span" *ngIf="isValid('appInput')">
+              Invalid Pattern (d-mmmm-yyyyy 5-January-2000)
+            </span>
+      <button class="" id="submit-button" type="submit" data-test-id="submit-button"  >Search</button>
+    </form>
+    </section>
+  
+    <ul class="mt-50 styled slide-up-fade-in" id="stockData" data-test-id="stock-data" *ngFor="let stock of dataStocks">
+      <li class="py-10">Open: {{stock.open}}</li>
+      <li class="py-10">Close: {{stock.close}}</li>
+      <li class="py-10">High: {{stock.high}}</li>
+      <li class="py-10">Low: {{stock.low}}</li>
+    </ul>
+  
+    <div class="mt-50 slide-up-fade-in" *ngIf="dataStocks.length === 0"
+         id="no-result" data-test-id="no-result">{{msg}} </div>
+  </div>
